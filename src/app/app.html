@@ -1,0 +1,84 @@
+<!-- Navbar -->
+<header>
+   <div class="header-content-offset"></div>
+   <div id="header-content">
+      <span id="nav-logo">&lt;Db/&gt;</span>
+      <nav>
+         <ul>
+            <li><a href="#intro-container">Home</a></li>
+            <li><a href="#about-container">About</a></li>
+            <li><a href="#skills-container">Skills</a></li>
+            <li><a href="#portfolio-container">Portfolio</a></li>
+            <li><a href="#contact-container">Contact</a></li>
+         </ul>
+         <!-- <ul>
+            <li><img class="circle-link" width="17" height="17" src="../assets/images/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" /></li>
+         </ul> -->
+      </nav>
+   </div>
+   <div class="header-content-offset"></div>
+</header>
+
+<!-- Main -->
+<div id="content" role="main" [style.cursor]="isLoading() ? 'wait' : 'default'">
+   <div id="intro-container" class="section-container">
+      <div id="intro-content">
+         <h1>Hello, I'm {{this.title}}</h1>
+         <h3>Software Developer</h3>
+         <p style="font-size: 16px; width: 400px;">I have completed a Bachelor of Information Technology
+            from RMIT and am currently looking to pursue my career in computer science. I have a strong drive to further
+            learn and expand my knowledge
+            base so I can drive business success through technology solutions. I am open to all areas of computer
+            science but already have
+            some experience a Junior Developer.</p>
+         <app-button [id]="'download-CV-link'" [version]="'link'" [text]="'Download CV'" [href]="'../assets/Computer Science CV.pdf'" [downloadable]="true"></app-button>
+      </div>
+      <img id="profile-picture" width="400px" height="400px" src="../assets/images/self-portrait.jpg">
+   </div>
+   <app-divider class="wd-1300"></app-divider>
+   <div id="about-container" class="section-container">
+      <h2 class="section-title">About Me</h2>
+      <p>I am a passionate and enthusiastic IT graduate with a keen interest in software engineering. My journey in
+         computer science started when I progressed from watching YouTube tutorials for
+         editing and producing music to coming across coding videos and developing a curiosity into computer science. My
+         interest in programming quickly developed into a passion, so I enrolled at
+         RMIT University and completed a Bachelors of Information Technology. At university I learnt the concepts of
+         programming and when I was home I'd make various websites to develop my skills.
+         I also worked for a time at an internship which helped me understand a web developers responsibilities and work
+         flows in a real business.
+      <p>After completing university I learnt about many other areas of computer science and have developed an interest
+         for Cyber Security, System Administration and Database Administration.
+         I have a keen interest to work in these areas, however my passion for programming tends to point me in the
+         direction of software development. Additionally, having
+         honed my skills on personal projects and professional experience I am now equipt with a strong foundation in
+         particularly front-end developement. The principles I pride my
+         programming on are scalability, efficiency, sleek design and an intuitive UI. This ensures a standard for good
+         user experience, easier maintenance/testing, less resource use and sound logic.
+      </p>
+      <p>Previous to my higher education and pursuit of a career in computer science, I worked in a few different
+         customer service jobs where I learnt a variety of personal and interpersonal skills that would be very useful
+         to me working in IT.</p>
+   </div>
+   <app-divider class="wd-1300"></app-divider>
+   <div id="skills-container" class="section-container">
+      <h2 class="section-title">Skillset</h2>
+      <app-skillset></app-skillset>
+   </div>
+   <app-divider class="wd-1300"></app-divider>
+   <div id="portfolio-container" class="section-container">
+      <h2 class="section-title">Portfolio</h2>
+      <div id="carousel-container">
+         <app-carousel></app-carousel>
+      </div>
+   </div>
+   <app-divider class="wd-1300"></app-divider>
+   <div id="contact-container" class="section-container">
+      <h2 class="section-title">Contact Me</h2>
+      <app-contact-form (cursorChanged)="isLoading.set($event)"></app-contact-form>
+   </div>
+</div>
+
+<!-- Footer -->
+<footer></footer>
+
+<router-outlet></router-outlet>

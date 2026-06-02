@@ -1,0 +1,61 @@
+.mat-mdc-outlined-button {
+   display: flex;
+   height: 40px;
+   width: 270px;
+   margin: 0 auto;
+   border-radius: 20px;
+   border: 1px solid #0dd110;
+   background-color: #1f1f1f;
+   color: white;
+   font-size: 14px; 
+   font-family: "Montserrat", sans-serif;
+   font-weight: 400;
+   transition: background-color 0.2s;
+}
+
+.mat-mdc-outlined-button:hover { background-color: rgba(79, 145, 80, 0.078); }
+
+.mat-mdc-outlined-button:disabled {
+   border-color: #cacaca33;
+   background-color: #2e2e2e93;
+   color: #ebebeb98;
+}
+
+#download-CV-link {
+    height: 40px;
+    width: 270px;
+    margin: 30px 10px 10px 0;
+    border-radius: 20px;
+    border: 1px solid #0dd110;
+    background-color: #1f1f1f;
+    color: white;
+    font-size: 14px; 
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    transition: background-color 0.2s;
+}
+
+#download-CV-link:hover { background-color: rgba(79, 145, 80, 0.078); }
+
+#contact-button {
+   display: flex;
+   height: 40px;
+   width: 270px;
+   margin: 0 auto;
+   border-radius: 20px;
+   border: 1px solid #0dd110;
+   background-color: #1f1f1f;
+   color: white;
+   font-size: 14px; 
+   font-family: "Montserrat", sans-serif;
+   font-weight: 400;
+   transition: background-color 0.2s;
+}
+
+#contact-button:hover { background-color: rgba(79, 145, 80, 0.078); }
+
+#contact-button:disabled {
+   border-color: #cacaca33;
+   background-color: #2e2e2e93;
+   color: #ebebeb98;
+}

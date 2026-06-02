@@ -1,0 +1,51 @@
+p {
+   color: white;
+   font-family: "Montserrat", sans-serif;
+   font-size: 16px;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+#skillset-chip-group {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+#skillset-chip-group p { 
+   margin: 10px 120px;
+   width: 100%;
+}
+
+.cdk-drag-animating {
+   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+#skillset-chip-list.cdk-drop-list-dragging {
+   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+#skillset-chip-list {
+   margin: 0 80px 0 120px;
+   width: 100%;
+   max-width: 1100px;
+   display: flex;
+   flex-wrap: wrap;
+   place-content: start start;
+   // gap: 100px 10px;
+}
+
+.mat-mdc-standard-chip {
+   border: 1px solid #0dd110;
+   background-color: #4a4a4a !important;
+   --mat-chip-label-text-color: #0dd110;
+   --mat-chip-label-text-font: "Montserrat", sans-serif;
+   --mat-chip-label-text-size: 13px;
+   --mat-chip-label-text-weight: bold;
+   --mat-chip-focus-state-layer-color: rgb(162, 162, 162);
+   --mat-chip-hover-state-layer-color: rgba(0, 0, 0, 1.0);
+}
+
+#skillset-chip {
+   margin: 5px 4px;
+}
