@@ -113,7 +113,7 @@ export class ContactFormComponent {
          "\n Sender message: " + this.contactModel().message
       }
 
-      console.log("Data: ", data);
+      // console.log("Data: ", data);
 
       this.apiSubscription = this.http.sendEmail(data)
          .pipe(
