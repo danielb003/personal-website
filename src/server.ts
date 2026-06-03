@@ -15,7 +15,7 @@ app.use(cors({
    optionSuccessStatus: 200
 }));
 
-app.post("/send-email", async(req:Request, res:Response) => {
+app.post("/api/send-email", async(req:Request, res:Response) => {
    try {
       const { name, email, text } = req.body;
       console.log("\nSERVER.TS\nreq.body input validation: ", req.body);
