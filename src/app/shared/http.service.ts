@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(data:any) {
+  sendEmail(data:any): Observable<any> {
     return this.http.post(this.emailUrl, data
     );
   }
