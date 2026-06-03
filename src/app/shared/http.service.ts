@@ -19,9 +19,11 @@ export class HttpService {
   //   );
   // }
 
-  sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
-    return this.http.post(this.emailUrl, payload);
-  }
+   sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
+      return this.http.post(this.emailUrl, payload, {
+         responseType: 'text'
+      });
+   }
 }
 
 // ).pipe(
