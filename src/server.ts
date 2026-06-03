@@ -15,7 +15,7 @@ app.use(cors({
    optionSuccessStatus: 200
 }));
 
-app.post("https://danielbellino.au/api/send-email", async(req:Request, res:Response) => {
+app.post("/api/send-email", async(req:Request, res:Response) => {
    try {
       const { name, email, text } = req.body;
       console.log("\nSERVER.TS\nreq.body input validation: ", req.body);
@@ -27,7 +27,7 @@ app.post("https://danielbellino.au/api/send-email", async(req:Request, res:Respo
       const transporter = nodemailer.createTransport({
          host: process.env['SMTP_HOST'],
          port: process.env['SMTP_PORT'],
-         secure: false, // true for port 465 only
+         secure: true, // true for port 465 only
          auth: {
             user: process.env['SMTP_USER'],
             pass: process.env['SMTP_PASS']
