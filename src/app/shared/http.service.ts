@@ -8,7 +8,7 @@ import { catchError, throwError } from 'rxjs';
 })
 
 export class HttpService {
-  private readonly emailUrl:string = "https://danielbellino.au";
+  private readonly emailUrl:string = "https://danielbellino.au/send-email";
 
   constructor(private http: HttpClient) { }
 
