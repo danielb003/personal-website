@@ -117,7 +117,7 @@ export class ContactFormComponent {
 
       this.apiSubscription = this.http.sendEmail(data)
          .pipe(
-            timeout(500),
+            timeout(5000),
             retry(2),
             catchError(error => {
                if(error.name === 'TimeoutError') {
