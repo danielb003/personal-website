@@ -12,11 +12,15 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(data:any): Observable<any> {
-    return this.http.post(this.emailUrl, data, {
-      responseType: 'text'
-    }
-    );
+  // sendEmail(data:any): Observable<any> {
+  //   return this.http.post(this.emailUrl, data, {
+  //     responseType: 'text'
+  //   }
+  //   );
+  // }
+
+  sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
+    return this.http.post(this.emailUrl, payload);
   }
 }
 
