@@ -38,7 +38,7 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
       });
       
       const mailOptions = {
-         from: email,
+         from: process.env['SMTP_USER'],
          to: process.env['SMTP_USER'],
          subject: "Personal Website | Contact Message",
          text
