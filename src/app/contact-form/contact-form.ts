@@ -94,7 +94,7 @@ export class ContactFormComponent {
       required(schemaPath.message, {message: 'You must enter a message'});
    });
 
-   constructor(private http: HttpService) { }
+   constructor(private httpService: HttpService) { }
 
    protected changeCursor() {
       this.isLoading = this.isLoading === false ? true : false;
@@ -113,9 +113,9 @@ export class ContactFormComponent {
          "\n Sender message: " + this.contactModel().message
       }
 
-      // console.log("Data: ", data);
+      console.log("Data: ", data);
 
-      this.apiSubscription = this.http.sendEmail(data)
+      this.apiSubscription = this.httpService.sendEmail(data)
          .pipe(
             timeout(5000),
             retry(2),
@@ -134,7 +134,7 @@ export class ContactFormComponent {
                console.log("POST subscription error occured: ", err);
                this.buttonText.set("Send");
                this.changeCursor();
-               this.cancelRequest();
+               // this.cancelRequest();
                alert("The email did not send. Please try again");
             },
             complete: () => {
