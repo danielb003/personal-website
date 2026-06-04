@@ -14,7 +14,6 @@ export class HttpService {
 //   constructor(private http: HttpClient) { }
 
    sendEmail(data: any): Observable<any> {
-      
       return this.http.post(`${this.emailUrl}/api/send-email`, data);
    }
 
