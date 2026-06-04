@@ -16,6 +16,10 @@ app.use(cors({
 }));
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
+   if(res.status(404)) {
+      return res.status(404).json({ error: 'Endpoint not found' });
+   }
+   
    try {
       const { name, email, text } = req.body;
       console.log("\nSERVER.TS\nreq.body input validation: ", req.body);
