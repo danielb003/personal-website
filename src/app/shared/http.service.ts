@@ -2,20 +2,23 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
    providedIn: 'root'
 })
 
 export class HttpService {
-   private readonly emailUrl:string = "https://danielbellino.au";
+   // private readonly emailUrl:string = "https://danielbellino.au";
    private readonly apiUrl:string = "/api/send-email";
+   private emailUrl = `${environment.apiUrl}/api/send-email`;
 
    http: HttpClient = inject(HttpClient);
 
    sendEmail(data: any): Observable<any> {
       // return this.http.post(`${this.emailUrl}/api/send-email`, data);
-      return this.http.post(this.apiUrl, data);
+      // return this.http.post(this.apiUrl, data);
+      return this.http.post(this.emailUrl, data)
    }
 
    // sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
