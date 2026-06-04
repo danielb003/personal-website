@@ -31,7 +31,7 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
       const transporter = nodemailer.createTransport({
          host: process.env['SMTP_HOST'],
          port: process.env['SMTP_PORT'],
-         secure: true, // true for port 465 only
+         secure: false, // true for port 465 only
          auth: {
             user: process.env['SMTP_USER'],
             pass: process.env['SMTP_PASS']
