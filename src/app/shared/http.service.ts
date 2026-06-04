@@ -8,14 +8,14 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 
 export class HttpService {
-   private readonly emailUrl:string = "https://danielbellino.au/api/send-email";
+   private readonly emailUrl:string = "https://danielbellino.au";
 
    http: HttpClient = inject(HttpClient);
 //   constructor(private http: HttpClient) { }
 
    sendEmail(data: any): Observable<any> {
       
-      return this.http.post(this.emailUrl, data);
+      return this.http.post(`${this.emailUrl}/api/send-email`, data);
    }
 
    // sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
