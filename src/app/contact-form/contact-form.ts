@@ -96,7 +96,7 @@ export class ContactFormComponent {
       required(schemaPath.message, {message: 'You must enter a message'});
    });
 
-   httpService: HttpService = inject(HttpService);
+   private httpService: HttpService = inject(HttpService);
    // constructor(private httpService: HttpService) { }
 
    protected changeCursor() {

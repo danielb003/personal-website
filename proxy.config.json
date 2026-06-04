@@ -1,7 +1,7 @@
 {
     "/api": {
         "target": "https://danielbellino.au",
-        "secure": false,
+        "secure": true,
         "changeOrigin": true
     }
 }
