@@ -97,7 +97,6 @@ export class ContactFormComponent {
    });
 
    private httpService: HttpService = inject(HttpService);
-   // constructor(private httpService: HttpService) { }
 
    protected changeCursor() {
       this.isLoading = this.isLoading === false ? true : false;

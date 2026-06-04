@@ -12,7 +12,6 @@ export class HttpService {
    private readonly apiUrl:string = "/api/send-email";
 
    http: HttpClient = inject(HttpClient);
-//   constructor(private http: HttpClient) { }
 
    sendEmail(data: any): Observable<any> {
       // return this.http.post(`${this.emailUrl}/api/send-email`, data);
