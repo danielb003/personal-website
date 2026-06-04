@@ -1,29 +1,28 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+   providedIn: 'root'
 })
 
 export class HttpService {
-  private readonly emailUrl:string = "https://danielbellino.au";
+   private readonly emailUrl:string = "https://danielbellino.au";
 
-  constructor(private http: HttpClient) { }
+   http: HttpClient = inject(HttpClient);
+//   constructor(private http: HttpClient) { }
 
-  // sendEmail(data:any): Observable<any> {
-  //   return this.http.post(this.emailUrl, data, {
-  //     responseType: 'text'
-  //   }
-  //   );
-  // }
-
-   sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
-      return this.http.post(this.emailUrl, payload, {
-         responseType: 'text'
-      });
+   sendEmail(data: any): Observable<any> {
+      
+      return this.http.post(this.emailUrl, data);
    }
+
+   // sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
+   //    return this.http.post(this.emailUrl, payload, {
+   //       responseType: 'text'
+   //    });
+   // }
 }
 
 // ).pipe(

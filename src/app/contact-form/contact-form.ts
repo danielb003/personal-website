@@ -8,6 +8,8 @@ import { HttpService } from '../shared/http.service';
 import { ButtonComponent } from '../button/button';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, retry, timeout } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
+
 
 interface ContactData {
   name:string;
@@ -94,7 +96,8 @@ export class ContactFormComponent {
       required(schemaPath.message, {message: 'You must enter a message'});
    });
 
-   constructor(private httpService: HttpService) { }
+   httpService: HttpService = inject(HttpService);
+   // constructor(private httpService: HttpService) { }
 
    protected changeCursor() {
       this.isLoading = this.isLoading === false ? true : false;

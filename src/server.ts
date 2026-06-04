@@ -7,7 +7,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-// const angularApp = new AngularNodeAppEngine();
+const angularApp = new AngularNodeAppEngine();
 // Add cors and JSON middleware
 app.use(express.json());
 app.use(cors({
@@ -17,7 +17,7 @@ app.use(cors({
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
    if(res.status(404)) {
-      return res.status(404).json({ error: 'Endpoint not found' });
+      return res.status(404).json({ success: false, error: 'Endpoint not found' });
    }
    
    try {
