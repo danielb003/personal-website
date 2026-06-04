@@ -45,7 +45,7 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
          from: process.env['SMTP_USER'],
          to: process.env['SMTP_USER'],
          subject: "Personal Website | Contact Message",
-         text
+         text: text
       };
 
       const info = await transporter.sendMail(mailOptions);

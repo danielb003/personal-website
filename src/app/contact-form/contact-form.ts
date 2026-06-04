@@ -118,7 +118,8 @@ export class ContactFormComponent {
 
       console.log("Data: ", data);
 
-      this.apiSubscription = this.httpService.sendEmail(data)
+      // this.apiSubscription = this.httpService.sendEmail(data)
+      this.httpService.sendEmail(data)
          .pipe(
             timeout(5000),
             retry(2),
