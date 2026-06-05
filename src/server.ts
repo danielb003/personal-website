@@ -12,7 +12,9 @@ const angularApp = new AngularNodeAppEngine();
 app.use(express.json());
 app.use(cors({
    origin: process.env['CORS_ORIGIN'],
-   optionSuccessStatus: 200
+   methods: ['POST', 'OPTIONS'],
+   optionSuccessStatus: 200,
+   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
