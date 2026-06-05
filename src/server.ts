@@ -9,12 +9,14 @@ require('dotenv').config();
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 // Add cors and JSON middleware
-app.use(express.json());
 app.use(cors({
    origin: process.env['CORS_ORIGIN'],
-   methods: ['POST', 'OPTIONS'],
-   optionSuccessStatus: 200
+   methods: ['DELETE', 'GET', 'POST', 'PUT', 'OPTIONS'],
+   optionSuccessStatus: 200,
+   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.use(express.json());
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
    if(res.status(404)) {
