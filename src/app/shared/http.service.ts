@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment.prod';
 
 export class HttpService {
    // private readonly apiUrl:string = "/api/send-email";
-   private emailUrl = "/api/send-email";
+   private emailUrl = `${environment.apiUrl}/api/send-email`;
 
    http: HttpClient = inject(HttpClient);
 
