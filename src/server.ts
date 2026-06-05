@@ -19,6 +19,8 @@ app.use(cors({
 app.use(express.json());
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
+   console.log("Inside Node.js file");
+
    if(res.status(404)) {
       return res.status(404).json({ success: false, error: 'Endpoint not found' });
    }
