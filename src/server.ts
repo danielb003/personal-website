@@ -68,5 +68,6 @@ app.listen(process.env['PORT'], (error:any) => {
    console.log(`Server is running on http://localhost:${process.env['PORT']}`);
 });
 
+export default app;
 // Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
 // export const reqHandler = createNodeRequestHandler(app);
