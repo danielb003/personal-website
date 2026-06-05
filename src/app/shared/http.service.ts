@@ -9,15 +9,12 @@ import { environment } from '../../environments/environment';
 })
 
 export class HttpService {
-   // private readonly emailUrl:string = "https://danielbellino.au";
-   private readonly apiUrl:string = "/api/send-email";
+   // private readonly apiUrl:string = "/api/send-email";
    private emailUrl = `${environment.apiUrl}/api/send-email`;
 
    http: HttpClient = inject(HttpClient);
 
    sendEmail(data: any): Observable<any> {
-      // return this.http.post(`${this.emailUrl}/api/send-email`, data);
-      // return this.http.post(this.apiUrl, data);
       return this.http.post(this.emailUrl, data)
    }
 
