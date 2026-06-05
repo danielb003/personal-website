@@ -13,8 +13,7 @@ app.use(express.json());
 app.use(cors({
    origin: process.env['CORS_ORIGIN'],
    methods: ['POST', 'OPTIONS'],
-   optionSuccessStatus: 200,
-   allowedHeaders: ['Content-Type', 'Authorization']
+   optionSuccessStatus: 200
 }));
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
