@@ -11,12 +11,14 @@ const angularApp = new AngularNodeAppEngine();
 // Add cors and JSON middleware
 app.use(cors({
    origin: process.env['CORS_ORIGIN'],
-   methods: ['DELETE', 'GET', 'POST', 'PUT', 'OPTIONS'],
+   methods: ['POST', 'OPTIONS'],
    optionSuccessStatus: 200,
    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
+
+// app.options('*', cors());
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
    console.log("Inside Node.js file");
@@ -50,7 +52,7 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
          from: process.env['SMTP_USER'],
          to: process.env['SMTP_USER'],
          subject: "Personal Website | Contact Message",
-         text: text
+         html: text
       };
 
       const info = await transporter.sendMail(mailOptions);
