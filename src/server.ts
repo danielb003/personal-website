@@ -1,21 +1,21 @@
 import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/node';
-import { Request, Response } from 'express';
+import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
-const express = require('express');
+dotenv.config();
+// require('dotenv').config();
+// const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
 // Add cors and JSON middleware
-// app.use(cors({
-//    origin: process.env['CORS_ORIGIN'],
-//    methods: ['POST', 'OPTIONS'],
-//    optionSuccessStatus: 200,
-//    allowedHeaders: ['Content-Type', 'Authorization']
-// }));
-app.use(cors());
+app.use(cors({
+   origin: process.env['CORS_ORIGIN'],
+   methods: ['POST', 'OPTIONS'],
+   optionSuccessStatus: 200,
+   allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(express.json());
 
@@ -40,11 +40,11 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
    }
 
    if(req.method !== 'POST') {
-      return res.status(405).json({ error: 'Method Not Allowed' });
+      return res.status(405).send({ success: false, error: 'Method Not Allowed' });
    }
 
    if(res.status(404)) {
-      return res.status(404).json({ success: false, error: 'Endpoint not found' });
+      return res.status(404).send({ success: false, error: 'Endpoint not found' });
    }
    
    try {
@@ -54,12 +54,16 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
       if(!name || !email || !text) {
          return res.status(400).send({ success: false, error: "Missing required fields" });
       }
+
+      if(!name.trim() || !email.trim() || !text.trim()) {
+         return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
+      }
       
       const mailOptions = {
          from: process.env['SMTP_USER'],
          to: process.env['SMTP_USER'],
          subject: "Personal Website | Contact Message",
-         text: text,
+         text,
          html: `<h1>mailOptions works!</h1>`
       };
 
@@ -72,12 +76,13 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
    }
 });
 
-app.listen(process.env['PORT'], (error:any) => {
-   if(error) { throw error; }
+// REMOVED app.list() -> Vercel handles the server execution logic automatically
+// app.listen(process.env['PORT'], (error:any) => {
+//    if(error) { throw error; }
    
-   console.log(`Server is running on http://localhost:${process.env['PORT']}`);
-});
-
+//    console.log(`Server is running on http://localhost:${process.env['PORT']}`);
+// });
 export default app;
+
 // Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
 // export const reqHandler = createNodeRequestHandler(app);

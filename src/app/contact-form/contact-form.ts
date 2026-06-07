@@ -24,7 +24,7 @@ interface ContactData {
   styleUrl: './contact-form.scss',
   template: ` 
   <div id="form-container">
-      <form (submit)="onSubmit()" id="contact-form">
+      <form (submit)="onSubmit($event)" id="contact-form">
          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Enter your name</mat-label>
             <input matInput 
@@ -103,7 +103,8 @@ export class ContactFormComponent {
       this.cursorChanged.emit(this.isLoading);
    }
 
-   protected onSubmit() {
+   protected onSubmit(event: Event) {
+      event.preventDefault();
       this.buttonText.set("Sending...");
       this.changeCursor();
 
@@ -117,7 +118,6 @@ export class ContactFormComponent {
 
       console.log("Data: ", data);
 
-      // this.apiSubscription = this.httpService.sendEmail(data)
       this.httpService.sendEmail(data)
          // .pipe(
          //    timeout(5000),
@@ -137,7 +137,6 @@ export class ContactFormComponent {
                console.log("POST subscription error occured: ", err);
                this.buttonText.set("Send");
                this.changeCursor();
-               // this.cancelRequest();
                alert("The email did not send. Please try again");
             },
             complete: () => {
@@ -146,12 +145,5 @@ export class ContactFormComponent {
                this.changeCursor();
             }
          });
-   }
-
-   protected cancelRequest() {
-      if(this.apiSubscription) {
-         this.apiSubscription.unsubscribe();
-         console.log("HTTP request successfully aborted.");
-      }
    }
 }

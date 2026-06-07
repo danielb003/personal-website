@@ -4,20 +4,24 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, Observable, throwError, retry, timeout } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 
+export interface EmailData {
+   name: string;
+   email: string;
+   text: string;
+}
+
 @Injectable({
    providedIn: 'root'
 })
-
 export class HttpService {
    // Use absoulte paths to bypass the config proxy and requires CORS
    // private emailUrl = `${environment.apiUrl}/api/send-email`;
+   // Vercel uses relative paths and configures the rest
    private emailUrl = "/api/send-email";
-
-
    http: HttpClient = inject(HttpClient);
 
-   sendEmail(data: { name: string, email: string; text: string;}): Observable<any> {
-      return this.http.post(this.emailUrl, data).pipe(
+   sendEmail(data: EmailData): Observable<any> {
+      return this.http.post(this.emailUrl, data, { responseType: 'text' }).pipe(
             timeout(5000),
             retry(2),
             catchError(error => {
@@ -25,7 +29,8 @@ export class HttpService {
                   console.error("The request timed out!");
                }
 
-               console.log("In here");
+               console.log("this.http.post data: ", data);
+               console.log("this.http.post FAILED");
                return throwError(() => error);
             })
          );
