@@ -2,8 +2,8 @@ import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/nod
 import { Request, Response } from 'express';
 
 const express = require('express');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const app = express();
@@ -18,10 +18,15 @@ app.use(cors({
 
 app.use(express.json());
 
-// app.options('*', cors());
-
 app.post("/api/send-email", async(req:Request, res:Response) => {
    console.log("Inside Node.js file");
+   if(req.method === 'OPTIONS') {
+      return res.status(200).end();
+   }
+
+   if(req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method Not Allowed' });
+   }
 
    if(res.status(404)) {
       return res.status(404).json({ success: false, error: 'Endpoint not found' });
@@ -38,7 +43,7 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
       const transporter = nodemailer.createTransport({
          host: process.env['SMTP_HOST'],
          port: process.env['SMTP_PORT'],
-         secure: false, // true for port 465 only
+         secure: process.env['SMTP_PORT'] === '465',
          auth: {
             user: process.env['SMTP_USER'],
             pass: process.env['SMTP_PASS']
@@ -52,7 +57,8 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
          from: process.env['SMTP_USER'],
          to: process.env['SMTP_USER'],
          subject: "Personal Website | Contact Message",
-         html: text
+         text: text,
+         html: `<h1>mailOptions works!</h1>`
       };
 
       const info = await transporter.sendMail(mailOptions);

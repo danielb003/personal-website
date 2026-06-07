@@ -110,9 +110,9 @@ export class ContactFormComponent {
       const data = {
          name: this.contactModel().name,
          email: this.contactModel().email,
-         text: "Sender name: " + this.contactModel().name + 
-         "\n Sender email address: " + this.contactModel().email + 
-         "\n Sender message: " + this.contactModel().message
+         text: this.contactModel().name + 
+         "\n" + this.contactModel().email + 
+         "\n\n" + this.contactModel().message
       }
 
       console.log("Data: ", data);
