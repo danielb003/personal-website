@@ -24,6 +24,8 @@ export class HttpService {
                if(error.name === 'TimeoutError') {
                   console.error("The request timed out!");
                }
+
+               console.log("In here");
                return throwError(() => error);
             })
          );
