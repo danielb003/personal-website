@@ -76,7 +76,7 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
    }
 });
 
-// REMOVED app.list() -> Vercel handles the server execution logic automatically
+// REMOVED app.list() -> Vercel handles the server execution logic automatically and export is added
 // app.listen(process.env['PORT'], (error:any) => {
 //    if(error) { throw error; }
    
