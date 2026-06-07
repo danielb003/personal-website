@@ -1,27 +1,29 @@
 import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/node';
 import { Request, Response } from 'express';
 
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 // Add cors and JSON middleware
-app.use(cors({
-   origin: process.env['CORS_ORIGIN'],
-   methods: ['POST', 'OPTIONS'],
-   optionSuccessStatus: 200,
-   allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// app.use(cors({
+//    origin: process.env['CORS_ORIGIN'],
+//    methods: ['POST', 'OPTIONS'],
+//    optionSuccessStatus: 200,
+//    allowedHeaders: ['Content-Type', 'Authorization']
+// }));
+app.use(cors());
 
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
-   host: process.env['SMTP_HOST'],
-   port: process.env['SMTP_PORT'],
-   secure: process.env['SMTP_PORT'] === '465',
+   // host: process.env['SMTP_HOST'],
+   // port: process.env['SMTP_PORT'],
+   // secure: process.env['SMTP_PORT'] === '465',
+   service: 'gmail', // Nodemail maps this to smtp.gmail.com internally
    auth: {
       user: process.env['SMTP_USER'],
       pass: process.env['SMTP_PASS']
