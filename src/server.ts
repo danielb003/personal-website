@@ -2,8 +2,8 @@ import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/nod
 import { Request, Response } from 'express';
 
 const express = require('express');
-const cors = require('cors');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +17,19 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+const transporter = nodemailer.createTransport({
+   host: process.env['SMTP_HOST'],
+   port: process.env['SMTP_PORT'],
+   secure: process.env['SMTP_PORT'] === '465',
+   auth: {
+      user: process.env['SMTP_USER'],
+      pass: process.env['SMTP_PASS']
+   },
+   connectionTimeout: 5000,
+   greetingTimeout: 4000,
+   socketTimeout: 5000
+});
 
 app.post("/api/send-email", async(req:Request, res:Response) => {
    console.log("Inside Node.js file");
@@ -39,19 +52,6 @@ app.post("/api/send-email", async(req:Request, res:Response) => {
       if(!name || !email || !text) {
          return res.status(400).send({ success: false, error: "Missing required fields" });
       }
-
-      const transporter = nodemailer.createTransport({
-         host: process.env['SMTP_HOST'],
-         port: process.env['SMTP_PORT'],
-         secure: process.env['SMTP_PORT'] === '465',
-         auth: {
-            user: process.env['SMTP_USER'],
-            pass: process.env['SMTP_PASS']
-         },
-         connectionTimeout: 5000,
-         greetingTimeout: 4000,
-         socketTimeout: 5000
-      });
       
       const mailOptions = {
          from: process.env['SMTP_USER'],

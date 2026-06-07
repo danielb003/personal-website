@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError, retry, timeout } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 
 @Injectable({
@@ -16,8 +16,17 @@ export class HttpService {
 
    http: HttpClient = inject(HttpClient);
 
-   sendEmail(data: any): Observable<any> {
-      return this.http.post(this.emailUrl, data)
+   sendEmail(data: { name: string, email: string; text: string;}): Observable<any> {
+      return this.http.post(this.emailUrl, data).pipe(
+            timeout(5000),
+            retry(2),
+            catchError(error => {
+               if(error.name === 'TimeoutError') {
+                  console.error("The request timed out!");
+               }
+               return throwError(() => error);
+            })
+         );
    }
 
    // sendEmail(payload: { name: string, email: string; text: string;}): Observable<any> {
