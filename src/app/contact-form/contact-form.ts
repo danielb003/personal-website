@@ -79,7 +79,6 @@ export class ContactFormComponent {
 
    protected buttonText = signal("Send");
    protected isLoading:boolean = false;
-   private apiSubscription?: Subscription;
    @Output() cursorChanged = new EventEmitter<boolean>();
 
    protected contactModel = signal<ContactData>({
