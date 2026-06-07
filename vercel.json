@@ -15,6 +15,7 @@
          "headers": { "Access-Control-Allow-Origin": "*" }
       }
    ],
+   "$schema": "https://openapi.vercel.sh/vercel.json",
    "rewrites": [
     {
       "source": "/(.*)",
