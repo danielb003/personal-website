@@ -7,19 +7,10 @@
          "use": "@vercel/node"
       }
    ],
-   "routes": [
-      {
-         "src": "/(.*)",
-         "dest": "/server.ts",
-         "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-         "headers": { "Access-Control-Allow-Origin": "*" }
-      }
-   ],
-   "$schema": "https://openapi.vercel.sh/vercel.json",
    "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/browser/index.html"
     }
   ]
 }

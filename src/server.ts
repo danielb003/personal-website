@@ -1,10 +1,10 @@
 import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/node';
-import express, { Request, Response } from 'express';
+import { Request, Response } from 'express';
 import dotenv from 'dotenv';
 
 dotenv.config();
 // require('dotenv').config();
-// const express = require('express');
+const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 
@@ -33,7 +33,7 @@ const transporter = nodemailer.createTransport({
    socketTimeout: 5000
 });
 
-app.post("/api/send-email", async(req:Request, res:Response) => {
+app.post("/api/send-email", async(req: Request, res: Response) => {
    console.log("Inside Node.js file");
    if(req.method === 'OPTIONS') {
       return res.status(200).end();
