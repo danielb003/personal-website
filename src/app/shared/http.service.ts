@@ -30,7 +30,6 @@ export class HttpService {
                   console.error("The request timed out!");
                }
 
-               console.log("this.http.post data: ", data);
                console.log("this.http.post FAILED");
                return throwError(() => error);
             })
