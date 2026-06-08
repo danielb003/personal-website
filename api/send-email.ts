@@ -24,10 +24,9 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
 const transporter = nodemailer.createTransport({
-   // host: process.env['SMTP_HOST'],
-   // port: process.env['SMTP_PORT'],
-   // secure: process.env['SMTP_PORT'] === '465',
-   service: 'gmail', // Nodemailer maps this to smtp.gmail.com internally
+   host: process.env['SMTP_HOST'],
+   port: process.env['SMTP_PORT'],
+   secure: process.env['SMTP_PORT'] === '465',
    auth: {
       user: process.env['SMTP_USER'],
       pass: process.env['SMTP_PASS']
@@ -85,7 +84,7 @@ const transporter = nodemailer.createTransport({
    }
 });*/
 
-export default async function handler(req:VercelRequest, res: VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
    res.setHeader('Access-Control-Allow-Credentials', 'true');
    res.setHeader('Access-Control-Allow-Origin', '*');
    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -140,4 +139,3 @@ export default async function handler(req:VercelRequest, res: VercelResponse) {
 //
 // 
 // export default app;
-// module.exports = app;
