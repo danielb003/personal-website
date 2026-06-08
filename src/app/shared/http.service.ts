@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, Observable, throwError, retry, timeout } from 'rxjs';
+import { catchError, Observable, map, throwError, retry, timeout } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 
 export interface EmailData {
@@ -18,21 +18,22 @@ export class HttpService {
    // private emailUrl = `${environment.apiUrl}/api/send-email`;
    // Vercel uses relative paths and configures the rest
    private emailUrl = "/api/send-email";
-   http: HttpClient = inject(HttpClient);
+   private readonly _http = inject(HttpClient);
 
-   sendEmail(data: EmailData): Observable<any> {
+   sendEmail(data: EmailData): Observable<string> {
       // Using res.send() instead of res.json() because we need to declare raw text file
-      return this.http.post(this.emailUrl, data, { responseType: 'text' }).pipe(
-            timeout(5000),
-            retry(2),
-            catchError(error => {
-               if(error.name === 'TimeoutError') {
-                  console.error("The request timed out!");
-               }
+      return this._http.post<{ message: string }>(this.emailUrl, data).pipe(
+            // timeout(5000),
+            // retry(2),
+            // catchError(error => {
+            //    if(error.name === 'TimeoutError') {
+            //       console.error("The request timed out!");
+            //    }
 
-               console.log("this.http.post FAILED");
-               return throwError(() => error);
-            })
+            //    console.log("this.http.post FAILED");
+            //    return throwError(() => error);
+            // })
+            map((res) => res.message),
          );
    }
 }
