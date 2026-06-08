@@ -14,15 +14,17 @@ export interface EmailData {
    providedIn: 'root'
 })
 export class HttpService {
-   // Use absoulte paths to bypass the config proxy and requires CORS
-   // private emailUrl = `${environment.apiUrl}/api/send-email`;
+   /* Use absoulte paths to bypass the config proxy and requires CORS
+   private emailUrl = `${environment.apiUrl}/api/send-email`; */
+   
    // Vercel uses relative paths and configures the rest
    private emailUrl = "/api/send-email";
    private readonly _http = inject(HttpClient);
 
-   sendEmail(data: EmailData): Observable<string> {
+   /*sendEmail(data: EmailData): Observable<string> {
       // Using res.send() instead of res.json() because we need to declare raw text file
-      return this._http.post<{ message: string }>(this.emailUrl, data).pipe(
+      return this._http.post<{ message: string }>(this.emailUrl, data)
+         .pipe(
             // timeout(5000),
             // retry(2),
             // catchError(error => {
@@ -35,6 +37,11 @@ export class HttpService {
             // })
             map((res) => res.message),
          );
+   }*/
+
+   sendEmail(data: EmailData): Observable<any> {
+      // Using res.send() instead of res.json() because we need to declare raw text file
+      return this._http.post(this.emailUrl, data);
    }
 }
 

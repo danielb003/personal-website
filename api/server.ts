@@ -21,7 +21,7 @@ app.use(cors({
 
 // Crucial: Vercel needs these to parse the Angular payload
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 const transporter = nodemailer.createTransport({
    // host: process.env['SMTP_HOST'],
@@ -37,7 +37,7 @@ const transporter = nodemailer.createTransport({
    socketTimeout: 5000
 });
 
-app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
+/*app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
    console.log("Inside Node.js file");
    if(req.method === 'OPTIONS') {
       return res.status(200).end();
@@ -59,12 +59,12 @@ app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
          return res.status(400).send({ success: false, error: "Missing required fields" });
       }
 
-      if(!name.trim() || !email.trim() || !text.trim()) {
-         return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
-      }
-
       if(!isValidEmail(email)) {
          return res.status(400).send({ success: false, error: "Invalid email address format" });
+      }
+
+      if(!name.trim() || !email.trim() || !text.trim()) {
+         return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
       }
       
       const mailOptions = {
@@ -83,11 +83,48 @@ app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
    } catch (error: any) {
       return res.status(500).send({ success: false, error: error.message });
    }
-});
+});*/
 
-// export default function() {
+export default async function handler(req:VercelRequest, res: VercelResponse) {
+   console.log("Inside Node.js file");
+   if(req.method !== 'POST') {
+      return res.status(405).send({ success: false, error: 'Method Not Allowed' });
+   }
 
-// };
+   if(res.status(404)) {
+      return res.status(404).send({ success: false, error: 'Endpoint not found' });
+   }
+   
+   const { name, email, text } = req.body;
+   console.log("\nSERVER.TS received data: ", req.body);
+
+   if(!name || !email || !text) {
+      return res.status(400).send({ success: false, error: "Missing required fields" });
+   }
+   if(!isValidEmail(email)) {
+      return res.status(400).send({ success: false, error: "Invalid email address format" });
+   }
+   if(!name.trim() || !email.trim() || !text.trim()) {
+      return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
+   }
+   
+   const mailOptions = {
+      from: process.env['SMTP_USER'],
+      to: process.env['SMTP_USER'],
+      subject: "Personal Website | Contact Message",
+      text,
+      html: `<h1>mailOptions works!</h1>`
+   };
+
+   try{
+      const info = await transporter.sendMail(mailOptions);
+
+      console.log("\nServer Response: ", info.response);
+      return res.status(200).send({ success: true, message: info.response });
+   } catch (error: any) {
+      return res.status(500).send({ success: false, error: error.message });
+   }
+}
 
 // DO NOT use app.list() for Vercel production, export the app instead
 // app.listen(process.env['PORT'], (error:any) => {
@@ -97,5 +134,5 @@ app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
 // });
 //
 // 
-export default app;
+// export default app;
 // module.exports = app;
