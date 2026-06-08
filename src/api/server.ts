@@ -1,5 +1,6 @@
 import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/node';
 import { Request, Response } from 'express';
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -35,7 +36,7 @@ const transporter = nodemailer.createTransport({
    socketTimeout: 5000
 });
 
-app.post("/api/send-email", async(req: Request, res: Response) => {
+app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
    console.log("Inside Node.js file");
    if(req.method === 'OPTIONS') {
       return res.status(200).end();
@@ -77,6 +78,10 @@ app.post("/api/send-email", async(req: Request, res: Response) => {
       return res.status(500).send({ success: false, error: error.message });
    }
 });
+
+// export default function() {
+
+// };
 
 // DO NOT use app.list() for Vercel production, export the app instead
 // app.listen(process.env['PORT'], (error:any) => {

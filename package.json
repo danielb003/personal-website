@@ -40,7 +40,8 @@
     "@angular/compiler-cli": "^21.2.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.1",
-    "@types/node": "^20.17.19",
+    "@types/node": "^20.19.42",
+    "@vercel/node": "^5.8.12",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2"
   }
