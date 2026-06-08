@@ -21,7 +21,7 @@ export class HttpService {
    http: HttpClient = inject(HttpClient);
 
    sendEmail(data: EmailData): Observable<any> {
-      // Using res.send() instead of res.json() means we need to declare raw text file
+      // Using res.send() instead of res.json() because we need to declare raw text file
       return this.http.post(this.emailUrl, data, { responseType: 'text' }).pipe(
             timeout(5000),
             retry(2),

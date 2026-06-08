@@ -17,7 +17,9 @@ app.use(cors({
    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Crucial: Vercel needs these to parse the Angular payload
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const transporter = nodemailer.createTransport({
    // host: process.env['SMTP_HOST'],
@@ -49,7 +51,7 @@ app.post("/api/send-email", async(req: Request, res: Response) => {
    
    try {
       const { name, email, text } = req.body;
-      console.log("\nSERVER.TS\nreq.body input validation: ", req.body);
+      console.log("\nSERVER.TS received data: ", req.body);
 
       if(!name || !email || !text) {
          return res.status(400).send({ success: false, error: "Missing required fields" });
@@ -76,13 +78,13 @@ app.post("/api/send-email", async(req: Request, res: Response) => {
    }
 });
 
-// REMOVED app.list() -> Vercel handles the server execution logic automatically and export is added
+// DO NOT use app.list() for Vercel production, export the app instead
 // app.listen(process.env['PORT'], (error:any) => {
 //    if(error) { throw error; }
-   
+//   
 //    console.log(`Server is running on http://localhost:${process.env['PORT']}`);
 // });
+//
+// 
 export default app;
-
-// Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
-// export const reqHandler = createNodeRequestHandler(app);
+// module.exports = app;
