@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounce, email, form, FormField, FormRoot, required } from '@angular/forms/signals';
-import { HttpService } from '../shared/http.service';
+import { HttpService } from '../services/http.service';
 import { ButtonComponent } from '../button/button';
 import { Subscription, throwError } from 'rxjs';
 import { catchError, retry, timeout } from 'rxjs/operators';
@@ -95,7 +95,7 @@ export class ContactFormComponent {
       required(schemaPath.message, {message: 'You must enter a message'});
    });
 
-   private httpService: HttpService = inject(HttpService);
+   private readonly _httpService = inject(HttpService);
 
    protected changeCursor() {
       this.isLoading = this.isLoading === false ? true : false;
@@ -117,7 +117,7 @@ export class ContactFormComponent {
 
       console.log("Data: ", data);
 
-      this.httpService.sendEmail(data)
+      this._httpService.sendEmail(data)
          // .pipe(
          //    timeout(5000),
          //    retry(2),

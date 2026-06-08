@@ -64,7 +64,7 @@
               "allowedHosts": []
             },
             "ssr": {
-              "entry": "src/api/server.ts"
+              "entry": "api/server.ts"
             },
             "index": "src/index.html"
           },
