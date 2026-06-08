@@ -59,12 +59,9 @@
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
+            "outputPath": "dist/dbellino-personal-website",
             "security": {
               "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "api/send-email.ts"
             },
             "index": "src/index.html"
           },

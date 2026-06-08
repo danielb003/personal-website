@@ -2,12 +2,18 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, Observable, map, throwError, retry, timeout } from 'rxjs';
-import { environment } from '../../environments/environment.prod';
+// import { environment } from '../../environments/environment.prod';
 
-export interface EmailData {
+export interface EmailPayload {
    name: string;
    email: string;
    text: string;
+}
+
+export interface ApiResponse {
+   success: boolean;
+   message?: string;
+   error?: string;
 }
 
 @Injectable({
@@ -16,7 +22,7 @@ export interface EmailData {
 export class HttpService {
    /* Use absoulte paths to bypass the config proxy and requires CORS
    private emailUrl = `${environment.apiUrl}/api/send-email`; */
-   
+
    // Vercel uses relative paths and configures the rest
    private emailUrl = "/api/send-email";
    private readonly _http = inject(HttpClient);
@@ -39,9 +45,9 @@ export class HttpService {
          );
    }*/
 
-   sendEmail(data: EmailData): Observable<any> {
+   sendEmail(payload: EmailPayload): Observable<ApiResponse> {
       // Using res.send() instead of res.json() because we need to declare raw text file
-      return this._http.post(this.emailUrl, data);
+      return this._http.post<ApiResponse>(this.emailUrl, payload);
    }
 }
 
