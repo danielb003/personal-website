@@ -1,11 +1,11 @@
 {
   "name": "dbellino-personal-website",
   "version": "1.0.0",
-  "main": "src/server.ts",
+  "main": "api/send-email.ts",
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "node server.ts",
+    "start": "node send-email.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

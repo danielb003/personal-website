@@ -64,7 +64,7 @@
               "allowedHosts": []
             },
             "ssr": {
-              "entry": "api/server.ts"
+              "entry": "api/send-email.ts"
             },
             "index": "src/index.html"
           },

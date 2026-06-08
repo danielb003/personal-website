@@ -9,7 +9,7 @@
   },
   "include": [
     "src/**/*.ts"
-, "api/server.ts"  ],
+, "api/send-email.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

@@ -1,7 +1,7 @@
 
 {
    "rewrites": [
-      { "source": "/api/(.*)", "destination": "/api/server.ts" },
+      { "source": "/api/(.*)", "destination": "/api/send-email.ts" },
       { "source": "/(.*)", "destination": "/index.html" }
    ]
 }
