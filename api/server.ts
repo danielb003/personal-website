@@ -10,6 +10,7 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 
 const app = express();
+const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 // Add cors and JSON middleware
 app.use(cors({
    origin: process.env['CORS_ORIGIN'],
@@ -50,7 +51,7 @@ app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
       return res.status(404).send({ success: false, error: 'Endpoint not found' });
    }
    
-   try {
+   // try {
       const { name, email, text } = req.body;
       console.log("\nSERVER.TS received data: ", req.body);
 
@@ -61,6 +62,10 @@ app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
       if(!name.trim() || !email.trim() || !text.trim()) {
          return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
       }
+
+      if(!isValidEmail(email)) {
+         return res.status(400).send({ success: false, error: "Invalid email address format" });
+      }
       
       const mailOptions = {
          from: process.env['SMTP_USER'],
@@ -70,6 +75,7 @@ app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
          html: `<h1>mailOptions works!</h1>`
       };
 
+   try{
       const info = await transporter.sendMail(mailOptions);
 
       console.log("\nServer Response: ", info.response);
