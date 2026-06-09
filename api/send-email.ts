@@ -117,8 +117,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       from: process.env['SMTP_USER'],
       to: process.env['SMTP_USER'],
       subject: "Personal Website | Contact Message",
-      text,
-      html: `<h1>mailOptions works!</h1>`
+      text
    };
 
    try{
