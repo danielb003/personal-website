@@ -99,10 +99,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
    if(req.method !== 'POST') {
       return res.status(405).send({ success: false, error: 'Method Not Allowed' });
    }
-
-   if(res.status(404)) {
-      return res.status(404).send({ success: false, error: 'Endpoint not found' });
-   }
    
    const { name, email, text } = req.body;
    console.log("\nSERVER.TS received data: ", req.body);
