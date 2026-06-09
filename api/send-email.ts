@@ -2,25 +2,26 @@
 // import { Request, Response } from 'express';
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
 dotenv.config();
 // require('dotenv').config();
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+// const express = require('express');
+// const nodemailer = require('nodemailer');
+// const cors = require('cors');
 
-const app = express();
+// const app = express();
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 // Add cors and JSON middleware
-app.use(cors({
-   origin: process.env['CORS_ORIGIN'],
-   methods: ['POST', 'OPTIONS'],
-   optionSuccessStatus: 200,
-   allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// app.use(cors({
+//    origin: process.env['CORS_ORIGIN'],
+//    methods: ['POST', 'OPTIONS'],
+//    optionSuccessStatus: 200,
+//    allowedHeaders: ['Content-Type', 'Authorization']
+// }));
 
 // Crucial: Vercel needs these to parse the Angular payload
-app.use(express.json());
+// app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 
 const transporter = nodemailer.createTransport({
@@ -34,7 +35,7 @@ const transporter = nodemailer.createTransport({
    connectionTimeout: 5000,
    greetingTimeout: 4000,
    socketTimeout: 5000
-});
+} as any);
 
 /*app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
    console.log("Inside Node.js file");
