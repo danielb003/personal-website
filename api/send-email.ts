@@ -20,31 +20,22 @@ const transporter = nodemailer.createTransport({
 } as any);
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-   // res.setHeader('Access-Control-Allow-Credentials', 'true');
-   // res.setHeader('Access-Control-Allow-Origin', '*');
-   // res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-   // res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
    // Using res.send() instead of res.json() because we need to declare raw text file
-   console.log("Inside Node.js file");
-   if (req.method === 'OPTIONS') {
-      return res.status(200).end();
-   }
-
    if(req.method !== 'POST') {
       return res.status(405).send({ success: false, error: 'Method Not Allowed' });
    }
    
    // try {
    const { name, email, text } = req.body;
-   console.log("\nSERVER.TS received data: ", req.body);
 
    if(!name || !email || !text) {
       return res.status(400).send({ success: false, error: "Missing required fields" });
    }
+
    if(!isValidEmail(email)) {
       return res.status(400).send({ success: false, error: "Invalid email address format" });
    }
+
    if(!name.trim() || !email.trim() || !text.trim()) {
       return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
    }
@@ -56,10 +47,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       text
    };
 
-   try{
+   try {
       const info = await transporter.sendMail(mailOptions);
 
-      console.log("\nServer Response: ", info.response);
       return res.status(200).send({ success: true, message: info.response });
    } catch (error: any) {
       return res.status(500).send({ success: false, error: error.message });

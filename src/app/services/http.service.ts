@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, Observable, map, throwError, retry, timeout } from 'rxjs';
-// import { environment } from '../../environments/environment.prod';
 
 export interface EmailPayload {
    name: string;
@@ -20,9 +19,6 @@ export interface ApiResponse {
    providedIn: 'root'
 })
 export class HttpService {
-   /* Use absoulte paths to bypass the config proxy and requires CORS
-   private emailUrl = `${environment.apiUrl}/api/send-email`; */
-
    // Vercel uses relative paths and configures the rest
    private emailUrl = "/api/send-email";
    private readonly _http = inject(HttpClient);
