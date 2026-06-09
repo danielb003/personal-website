@@ -91,6 +91,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
    console.log("Inside Node.js file");
+   if (req.method === 'OPTIONS') {
+      return res.status(200).end();
+   }
+
    if(req.method !== 'POST') {
       return res.status(405).send({ success: false, error: 'Method Not Allowed' });
    }

@@ -47,3 +47,5 @@ Thumbs.db
 # Ignore local environment variables
 .env
 .env.local
+.vercel
+.env*

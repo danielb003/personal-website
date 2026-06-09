@@ -1,0 +1,13 @@
+{
+   "extends": "../tsconfig.json",
+   "compilerOptions": {
+      "rootDir": ".",
+      "target": "ES2022",
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "strict": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+   },
+   "include": [ "**/*.ts" ]     // Automatically covers api/*.ts
+}

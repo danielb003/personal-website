@@ -2,7 +2,7 @@
 {
    "version": 2,
    "rewrites": [
-      { "source": "/api/:path*", "destination": "/api/send-email.ts" },
+      { "source": "/api/(.*)", "destination": "/api/$1" },
       { "source": "/(.*)", "destination": "/index.html" }
    ]
 }
