@@ -46,7 +46,6 @@ export class HttpService {
    }*/
 
    sendEmail(payload: EmailPayload): Observable<ApiResponse> {
-      // Using res.send() instead of res.json() because we need to declare raw text file
       return this._http.post<ApiResponse>(this.emailUrl, payload);
    }
 }

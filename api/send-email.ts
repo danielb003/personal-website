@@ -1,28 +1,10 @@
-// import { AngularNodeAppEngine, createNodeRequestHandler } from '@angular/ssr/node';
-// import { Request, Response } from 'express';
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 
 dotenv.config();
-// require('dotenv').config();
-// const express = require('express');
-// const nodemailer = require('nodemailer');
-// const cors = require('cors');
 
-// const app = express();
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-// Add cors and JSON middleware
-// app.use(cors({
-//    origin: process.env['CORS_ORIGIN'],
-//    methods: ['POST', 'OPTIONS'],
-//    optionSuccessStatus: 200,
-//    allowedHeaders: ['Content-Type', 'Authorization']
-// }));
-
-// Crucial: Vercel needs these to parse the Angular payload
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
 
 const transporter = nodemailer.createTransport({
    host: process.env['SMTP_HOST'],
@@ -37,60 +19,13 @@ const transporter = nodemailer.createTransport({
    socketTimeout: 5000
 } as any);
 
-/*app.post("/api/send-email", async(req: VercelRequest, res: VercelResponse) => {
-   console.log("Inside Node.js file");
-   if(req.method === 'OPTIONS') {
-      return res.status(200).end();
-   }
-
-   if(req.method !== 'POST') {
-      return res.status(405).send({ success: false, error: 'Method Not Allowed' });
-   }
-
-   if(res.status(404)) {
-      return res.status(404).send({ success: false, error: 'Endpoint not found' });
-   }
-   
-   // try {
-      const { name, email, text } = req.body;
-      console.log("\nSERVER.TS received data: ", req.body);
-
-      if(!name || !email || !text) {
-         return res.status(400).send({ success: false, error: "Missing required fields" });
-      }
-
-      if(!isValidEmail(email)) {
-         return res.status(400).send({ success: false, error: "Invalid email address format" });
-      }
-
-      if(!name.trim() || !email.trim() || !text.trim()) {
-         return res.status(400).send({ success: false, error: "Fields cannot be blank space strings" });
-      }
-      
-      const mailOptions = {
-         from: process.env['SMTP_USER'],
-         to: process.env['SMTP_USER'],
-         subject: "Personal Website | Contact Message",
-         text,
-         html: `<h1>mailOptions works!</h1>`
-      };
-
-   try{
-      const info = await transporter.sendMail(mailOptions);
-
-      console.log("\nServer Response: ", info.response);
-      return res.status(200).send({ success: true, message: info.response });
-   } catch (error: any) {
-      return res.status(500).send({ success: false, error: error.message });
-   }
-});*/
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
    res.setHeader('Access-Control-Allow-Credentials', 'true');
    res.setHeader('Access-Control-Allow-Origin', '*');
    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
+   // Using res.send() instead of res.json() because we need to declare raw text file
    console.log("Inside Node.js file");
    if (req.method === 'OPTIONS') {
       return res.status(200).end();
@@ -100,6 +35,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(405).send({ success: false, error: 'Method Not Allowed' });
    }
    
+   // try {
    const { name, email, text } = req.body;
    console.log("\nSERVER.TS received data: ", req.body);
 
@@ -130,12 +66,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
    }
 }
 
-// DO NOT use app.list() for Vercel production, export the app instead
+// DO NOT use app.list() for Vercel production, export the serverless function instead
 // app.listen(process.env['PORT'], (error:any) => {
 //    if(error) { throw error; }
 //   
 //    console.log(`Server is running on http://localhost:${process.env['PORT']}`);
 // });
-//
-// 
-// export default app;

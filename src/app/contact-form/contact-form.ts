@@ -10,11 +10,10 @@ import { Subscription, throwError } from 'rxjs';
 import { catchError, retry, timeout } from 'rxjs/operators';
 import { Injectable, inject } from '@angular/core';
 
-
 interface ContactData {
-  name:string;
-  email:string;
-  message:string;
+  name: string;
+  email: string;
+  message: string;
 }
 
 @Component({
