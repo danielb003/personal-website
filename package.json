@@ -1,17 +1,15 @@
 {
   "name": "dbellino-personal-website",
   "version": "1.0.0",
-  "main": "api/send-email.ts",
+  "private": true,
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "node send-email.ts",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:dbellino-personal-website": "node dist/dbellino-personal-website/server/server.mjs"
+    "test": "ng test"
   },
-  "private": true,
   "packageManager": "npm@10.8.0",
   "dependencies": {
     "@angular/cdk": "^21.2.8",
