@@ -117,16 +117,16 @@ export class ContactFormComponent {
       console.log("Data: ", data);
 
       this._httpService.sendEmail(data)
-         // .pipe(
-         //    timeout(5000),
-         //    retry(2),
-         //    catchError(error => {
-         //       if(error.name === 'TimeoutError') {
-         //          console.error("The request timed out!");
-         //       }
-         //       return throwError(() => error);
-         //    })
-         // )
+         .pipe(
+            timeout(5000),
+            retry(2),
+            catchError(error => {
+               if(error.name === 'TimeoutError') {
+                  console.error("The request timed out!");
+               }
+               return throwError(() => error);
+            })
+         )
          .subscribe({
             next: (response) => {
                console.log("POST data receieved: ", response);
