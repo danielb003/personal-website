@@ -35,11 +35,11 @@ export class SkillsetComponent {
    readonly skills: string[][] = [
       ['Java', 'HTML5', 'SCSS', 'JavaScript / TypeScript', 'C ANSI', 'PHP', 'React', 'Angular', 'SQL',
          'JSON', 'BASH', 'Laravel'],
-      ['RDBMS | NoSQL', 'Stored Procedures', 'Views', 'TCP | UDP', 'IPv4 / 6', 'HTTP / S', 'S / FTP', 'SMTP / IMAP | POP3 | VOIP',
-         'TLS', 'ISO Model', 'DHCP | Static IP | PPPoE', 'DNS'],
-      ['Hashing', 'Data Encryption Standards', 'MFA | 2FA', 'Public Key Cryptography', 'Data Validation'],
+      ['RDBMS | NoSQL', 'Stored Procedures', 'Views', 'TCP | UDP', 'IPv4 / 6', 'HTTP / S', 'S / FTP', 'Email Protocols',
+         'ISO Model', 'DHCP | Static IP | PPPoE', 'DNS'],
+      ['Hashing', 'Data Encryption Standards', 'SSL | TLS', 'MFA | 2FA', 'Public Key Cryptography', 'Data Validation'],
       ['Git', 'Jira', 'JUnit (TDD)', 'MaterialUI', 'Wordpress', 'Virtual Machines', 'API', 'AWS', 'cPanel', 'VPN',
-         'MAC | HMAC', 'Code Modularisation', 'CMD / VIM / Scripts'],
+         'MAC | HMAC', 'CMD / VIM'],
       ['Windows', 'Mac', 'IOS', 'Android', 'Ubuntu', 'Kali Linux', 'PopOS']
    ];
 
