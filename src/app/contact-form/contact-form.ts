@@ -7,7 +7,6 @@ import { debounce, email, form, FormField, FormRoot, required } from '@angular/f
 import { HttpService } from '../services/http.service';
 import { ButtonComponent } from '../button/button';
 import { throwError, catchError, retry, timeout } from 'rxjs';
-// import { catchError, retry, timeout } from 'rxjs/operators';
 import { inject } from '@angular/core';
 
 interface ContactData {
@@ -116,7 +115,7 @@ export class ContactFormComponent {
 
       this._httpService.sendEmail(data)
          .pipe(
-            timeout(500),
+            timeout(5000),
             retry(2),
             catchError(error => {
                if(error.name === 'TimeoutError') {
