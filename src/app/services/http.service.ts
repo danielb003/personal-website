@@ -1,7 +1,6 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, Observable, map, throwError, retry, timeout } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export interface EmailPayload {
    name: string;
@@ -23,33 +22,14 @@ export class HttpService {
    private emailUrl = "/api/send-email";
    private readonly _http = inject(HttpClient);
 
-   /*sendEmail(data: EmailData): Observable<string> {
-      // Using res.send() instead of res.json() because we need to declare raw text file
-      return this._http.post<{ message: string }>(this.emailUrl, data)
-         .pipe(
-            // timeout(5000),
-            // retry(2),
-            // catchError(error => {
-            //    if(error.name === 'TimeoutError') {
-            //       console.error("The request timed out!");
-            //    }
-
-            //    console.log("this.http.post FAILED");
-            //    return throwError(() => error);
-            // })
-            map((res) => res.message),
-         );
-   }*/
-
    sendEmail(payload: EmailPayload): Observable<ApiResponse> {
       return this._http.post<ApiResponse>(this.emailUrl, payload);
    }
 }
 
-// ).pipe(
-//       takeUntilDestroyed(),
-//       catchError((error: HttpErrorResponse) => {
-//         // Handle client/server errors here
-//         console.error('HTTP Error:', error);
-//         return throwError(() => new Error('Something bad happened; please try again later.'));
-//       })
+/*.pipe(
+      takeUntilDestroyed(),
+      catchError((error: HttpErrorResponse) => {
+        console.error('HTTP Error:', error);
+        return throwError(() => new Error('Something bad happened; please try again later.'));
+})*/

@@ -6,9 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounce, email, form, FormField, FormRoot, required } from '@angular/forms/signals';
 import { HttpService } from '../services/http.service';
 import { ButtonComponent } from '../button/button';
-import { Subscription, throwError } from 'rxjs';
-import { catchError, retry, timeout } from 'rxjs/operators';
-import { Injectable, inject } from '@angular/core';
+import { throwError, catchError, retry, timeout } from 'rxjs';
+// import { catchError, retry, timeout } from 'rxjs/operators';
+import { inject } from '@angular/core';
 
 interface ContactData {
   name: string;
@@ -114,11 +114,9 @@ export class ContactFormComponent {
          "\n\n" + this.contactModel().message
       }
 
-      console.log("Data: ", data);
-
       this._httpService.sendEmail(data)
          .pipe(
-            timeout(500),
+            timeout(5000),
             retry(2),
             catchError(error => {
                if(error.name === 'TimeoutError') {
@@ -128,17 +126,13 @@ export class ContactFormComponent {
             })
          )
          .subscribe({
-            next: (response) => {
-               console.log("POST data receieved: ", response);
-            },
+            next: (response) => {},
             error: (err) => {
-               console.log("POST subscription error occured: ", err);
                this.buttonText.set("Send");
                this.changeCursor();
                alert("The email did not send. Please try again");
             },
             complete: () => {
-               console.log("POST stream is complete.");
                this.buttonText.set("Send");
                this.changeCursor();
             }

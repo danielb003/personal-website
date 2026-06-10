@@ -25,7 +25,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(405).send({ success: false, error: 'Method Not Allowed' });
    }
    
-   // try {
    const { name, email, text } = req.body;
 
    if(!name || !email || !text) {
