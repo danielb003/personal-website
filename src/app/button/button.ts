@@ -24,7 +24,7 @@ export class ButtonComponent {
    @Input({ transform: booleanAttribute }) isDisabled:boolean = false;
    @Input({ transform: booleanAttribute }) downloadable:boolean = false;
 
-   protected customFileName: string = 'Daniel Bellino CV';
+   protected customFileName: string = 'Daniel-Bellino-CV';
 
    check = (event: any): void => {
       if(!this.downloadable) {
