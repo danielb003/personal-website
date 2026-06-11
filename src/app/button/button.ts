@@ -17,14 +17,12 @@ import { MatRippleModule } from '@angular/material/core';
 })
 
 export class ButtonComponent {
-   @Input() text:any;
+   @Input() text:string = '';
    @Input() href:string = '';
    @Input() id:string = '';
    @Input() version:string = '';
    @Input({ transform: booleanAttribute }) isDisabled:boolean = false;
    @Input({ transform: booleanAttribute }) downloadable:boolean = false;
-
-   @Input() click:string = '';
 
    check = (event: any): void => {
       if(!this.downloadable) {
