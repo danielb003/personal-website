@@ -8,10 +8,10 @@ import { MatRippleModule } from '@angular/material/core';
   styleUrl: './button.scss',
   template: ` @switch(version) {
       @case("button") {
-         <button matButton="outlined" id="{{id}}" type="submit" disabled="{{isDisabled}}">{{text}}</button>
+         <button matButton="outlined" [id]="id" type="submit" [disabled]="isDisabled">{{text}}</button>
       }
       @case("link") {
-         <a matButton="outlined" href="{{href}}" id="{{id}}" [attr.download]="downloadable ? customFileName + '.pdf' : null" (click)="check($event)">{{text}}</a>
+         <a matButton="outlined" [href]="href" [id]="id" target="_blank" [attr.download]="downloadable ? customFileName + '.pdf' : null" (click)="check($event)">{{text}}</a>
       }
     }`
 })
