@@ -169,13 +169,43 @@ nav ul li a {
 }
 
 // FIX VIEWPORT BACKGROUND-COLOR
-// -----------------------------
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
    #content {
       background-color: red;
    }
+
+   .section-container {
+      width: 800px;
+   }
+
+   #intro-container {
+      flex-direction: column;
+      flex-wrap: wrap;
+      place-content: center space-between;
+   }
+
+   #intro-content {
+      margin-left: 0;
+      text-align: center;
+   }
+
+   #intro_content p {
+      margin: auto;
+      text-align: justify !important;
+   }
+
+   #profile-picture {
+      order: -1;
+      margin: auto;
+   }
+
+   #about-container p {
+      text-align: justify;
+   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 430px) {
+   #content {
+      background-color: purple;
+   }
 }
-// -----------------------------
