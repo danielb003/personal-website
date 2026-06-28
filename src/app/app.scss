@@ -33,10 +33,16 @@ a:hover {
    cursor: pointer;
 }
 
+img {
+   width: 400px;
+   height: 400px;
+}
+
 header {
    height: 60px;
    display: flex;
    flex-direction: row;
+   flex-wrap: wrap;
    place-content: center space-between;
    align-items: center;
    background-color: #1f1f1f;
@@ -44,7 +50,10 @@ header {
    font-weight: 500;
    position: fixed;
    top: 0;
-   width: 100%;
+   left: 0;
+   right: 0;
+   margin: auto;
+   width: 1300px;
    z-index: 1;
 }
 
@@ -59,6 +68,7 @@ header {
    flex-direction: row;
    place-content: center space-between;
    align-items: center;
+   margin: 0 auto;
    width: 1100px;
 }
 
@@ -111,7 +121,7 @@ nav ul li a {
    background-color: #1f1f1f;
    display: flex;
    margin: 0px auto;
-   width: 100%;
+   width: 1300px;
    flex-direction: column;
    align-items: center;
 }
@@ -119,6 +129,7 @@ nav ul li a {
 #intro-container {
    display: flex;
    flex-direction: row;
+   place-content: center space-between;
    padding: 250px 0;
 }
 
@@ -127,8 +138,17 @@ nav ul li a {
    margin-left: 100px;
 }
 
+#intro-content h1 {
+   min-width: 480px;
+}
+
+#intro-content p {
+   width: 400px;
+   font-size: 16px;
+}
+
 #profile-picture { 
-   margin-top: 40px;
+   margin: auto 105px auto 0;
    border-radius: 200px; 
 }
 
@@ -140,6 +160,7 @@ nav ul li a {
    margin: 0 auto 20px auto;
    font-size: 18px;
    line-height: 30px;
+   text-align: justify;
 }
 
 #skills-container { margin-bottom: 80px; }
@@ -147,8 +168,9 @@ nav ul li a {
 #contact-container { margin-bottom: 25px; }
 
 .section-container {
-   width: 1300px;
+   width: 100%;
    height: 100%;
+   max-width: 1300px;
 }
 
 .section-title {
@@ -159,8 +181,6 @@ nav ul li a {
    padding: 10px 0;
 }
 
-.section-container p { }
-
 #carousel-container {
    border-radius: 10px; 
    padding: 0px; 
@@ -169,9 +189,46 @@ nav ul li a {
 }
 
 // FIX VIEWPORT BACKGROUND-COLOR
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1560px) {
+   header {
+      max-width: 1300px;
+      width: 85%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+   }
+
+   img {
+      height: 30%;
+      width: 30%;
+   }
+
+   #header-content {
+      max-width: 1100px;
+      width: 85%;
+   }
+
+   #content {
+      // background-color: maroon;
+      max-width: 1300px;
+      width: 85%;
+   }
+
+   .wd-1300 {
+      max-width: 1300px;
+      width: 100%;
+   }
+}
+
+@media screen and (max-width: 1080px) {
    #content {
       background-color: red;
+      width: 100%;
+   }
+
+   img {
+      width: 320px;
+      height: 320px;
    }
 
    .section-container {
@@ -182,6 +239,7 @@ nav ul li a {
       flex-direction: column;
       flex-wrap: wrap;
       place-content: center space-between;
+      padding: 200px 0 180px 0;
    }
 
    #intro-content {
@@ -189,14 +247,15 @@ nav ul li a {
       text-align: center;
    }
 
-   #intro_content p {
+   #intro-content p {
+      width: 600px;
       margin: auto;
       text-align: justify !important;
    }
 
    #profile-picture {
       order: -1;
-      margin: auto;
+      margin: 0 auto 40px auto;
    }
 
    #about-container p {

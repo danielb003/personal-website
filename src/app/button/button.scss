@@ -59,3 +59,9 @@
    background-color: #2e2e2e93;
    color: #ebebeb98;
 }
+
+@media screen and (max-width: 1024px) { 
+   #download-CV-link {
+      margin: 40px auto 0 auto;
+   }
+}
