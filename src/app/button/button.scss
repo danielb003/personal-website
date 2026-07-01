@@ -1,3 +1,22 @@
+@use '@angular/material' as mat;
+
+:host {
+   button.mat-mdc-outlined-button,
+   a.mat-mdc-outlined-button {
+      @include mat.button-overrides((
+         outlined-state-layer-color: rgba(140, 140, 140, 0.078),
+         outlined-ripple-color: rgba(132, 132, 132, 0.078)
+      ));
+
+      background-color: #1b1f1f;
+      transition: background-color 0.2s ease-in-out !important;
+
+      &:hover:not(:disabled) {
+         background-color: rgba(140, 140, 140, 0.078) !important;
+      }
+   }
+}
+
 .mat-mdc-outlined-button {
    display: flex;
    height: 40px;
@@ -5,62 +24,31 @@
    margin: 0 auto;
    border-radius: 20px;
    border: 1px solid #0dd110;
-   background-color: #1f1f1f;
+   background-color: #1b1f1f;
    color: white;
    font-size: 14px; 
    font-family: "Montserrat", sans-serif;
    font-weight: 400;
-   transition: background-color 0.2s;
+   transition: background-color 0.2s ease-in-out;
 }
 
-.mat-mdc-outlined-button:hover { background-color: rgba(79, 145, 80, 0.078); }
-
 .mat-mdc-outlined-button:disabled {
-   border-color: #cacaca33;
-   background-color: #2e2e2e93;
-   color: #ebebeb98;
+   border-color: rgba(202, 202, 202, 0.2);
+   background-color: rgba(46, 46, 46, 0.6);
+   color: rgba(235, 235, 235, 0.6);
+}
+
+.mat-mdc-outlined-button:not(:disabled) {
+   border: 1px solid #0dd110;
+   background-color: #1b1f1f;
+   color: white;
 }
 
 #download-CV-link {
-    height: 40px;
-    width: 270px;
-    margin: 30px 10px 10px 0;
-    border-radius: 20px;
-    border: 1px solid #0dd110;
-    background-color: #1f1f1f;
-    color: white;
-    font-size: 14px; 
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    transition: background-color 0.2s;
+   margin: 30px 10px 10px 0;
 }
 
-#download-CV-link:hover { background-color: rgba(79, 145, 80, 0.078); }
-
-#contact-button {
-   display: flex;
-   height: 40px;
-   width: 270px;
-   margin: 0 auto;
-   border-radius: 20px;
-   border: 1px solid #0dd110;
-   background-color: #1f1f1f;
-   color: white;
-   font-size: 14px; 
-   font-family: "Montserrat", sans-serif;
-   font-weight: 400;
-   transition: background-color 0.2s;
-}
-
-#contact-button:hover { background-color: rgba(79, 145, 80, 0.078); }
-
-#contact-button:disabled {
-   border-color: #cacaca33;
-   background-color: #2e2e2e93;
-   color: #ebebeb98;
-}
-
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1080px) {
    #download-CV-link {
       margin: 40px auto 0 auto;
    }

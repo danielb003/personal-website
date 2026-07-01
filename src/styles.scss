@@ -21,12 +21,16 @@ $my-light-theme: mat.define-theme((
    @include mat.all-component-themes($my-light-theme);
 
    @include mat.theme-overrides((
-      surface: #1f1f1f,
+      surface: #1b1f1f,
    ));
 
-   /*@include mat.divider-overrides((
+   @include mat.divider-overrides((
       color: orange,
-   ));*/
+   ));
+
+   // @include mat.button-overrides((
+   //    state-layer-color: rgba(255, 0, 0, 0.5)
+   // ));
 }
 
 html, body {

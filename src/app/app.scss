@@ -45,7 +45,7 @@ header {
    flex-wrap: wrap;
    place-content: center space-between;
    align-items: center;
-   background-color: #1f1f1f;
+   background-color: #1b1f1f;
    color: #ffffff;
    font-weight: 500;
    position: fixed;
@@ -118,7 +118,6 @@ nav ul li a {
 }
 
 #content {
-   background-color: #1f1f1f;
    display: flex;
    margin: 0px auto;
    width: 1300px;
@@ -218,11 +217,21 @@ nav ul li a {
       max-width: 1300px;
       width: 100%;
    }
+
+   #carousel-container {
+      border-radius: 10px; 
+      padding: 0px; 
+      max-width: 1000px;
+      width: 85%;
+      // max-height: 500px;
+      height: 85%;
+      margin: 0 auto;
+   }
 }
 
 @media screen and (max-width: 1080px) {
    #content {
-      background-color: red;
+      // background-color: red;
       width: 100%;
    }
 
@@ -230,6 +239,10 @@ nav ul li a {
       width: 320px;
       height: 320px;
    }
+   
+   h1 { font-size: 66px; }
+   h2 { font-size: 42px; }
+   h3 { font-size: 30px ;}
 
    .section-container {
       width: 800px;
@@ -247,19 +260,29 @@ nav ul li a {
       text-align: center;
    }
 
-   #intro-content p {
-      width: 600px;
+   #intro-content h1 {
+      width: 100px;
       margin: auto;
-      text-align: justify !important;
+   }
+
+   #intro-content p {
+      width: 550px;
+      margin: auto;
+      text-align: center;
    }
 
    #profile-picture {
       order: -1;
-      margin: 0 auto 40px auto;
+      margin: 0 auto 30px auto;
    }
 
    #about-container p {
       text-align: justify;
+   }
+
+   .wd-1300 {
+      max-width: 800px;
+      width: 85%;
    }
 }
 
