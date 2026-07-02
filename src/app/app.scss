@@ -233,10 +233,14 @@ nav ul li a {
    }
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1080px) {   
    #content {
       // background-color: red;
       width: 100%;
+   }
+
+   nav {
+      display: none;
    }
    
    h1 { font-size: 60px; }
@@ -296,5 +300,15 @@ nav ul li a {
 @media screen and (max-width: 430px) {
    #content {
       background-color: purple;
+   }
+
+   #about-container {
+      width: 100%;
+   }
+
+   #about-container p {
+      width: 90%;
+      font-size: 12px;
+      line-height: 22px;
    }
 }

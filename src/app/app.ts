@@ -5,11 +5,12 @@ import { SkillsetComponent } from './skillset-component/skillset';
 import { ContactFormComponent } from './contact-form/contact-form';
 import { DividerComponent } from './divider/divider';
 import { ButtonComponent } from './button/button';
+import { ToolbarComponent } from './toolbar/toolbar';
 import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
    selector: 'app-root',
-   imports: [RouterOutlet, ButtonComponent, Carousel, SkillsetComponent, ContactFormComponent, DividerComponent],
+   imports: [RouterOutlet, ButtonComponent, Carousel, SkillsetComponent, ContactFormComponent, DividerComponent, ToolbarComponent],
    styleUrl: './app.scss',
    templateUrl: './app.html'
 })
