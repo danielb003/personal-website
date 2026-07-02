@@ -48,6 +48,17 @@
    margin: 30px 10px 10px 0;
 }
 
+#contact-button {
+   width: 250px;
+   border-radius: 4px;
+}
+
+@media screen and (max-width: 1560px) {
+   #contact-button {
+      width: 20%;
+   }
+}
+
 @media screen and (max-width: 1080px) {
    #download-CV-link {
       margin: 40px auto 0 auto;

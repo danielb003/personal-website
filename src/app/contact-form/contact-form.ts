@@ -10,19 +10,18 @@ import { throwError, catchError, retry, timeout } from 'rxjs';
 import { inject } from '@angular/core';
 
 interface ContactData {
-  name: string;
-  email: string;
-  message: string;
+   name: string;
+   email: string;
+   message: string;
 }
 
 @Component({
-  selector: 'app-contact-form',
-  imports: [ButtonComponent, FormField, FormRoot, MatInputModule, MatFormFieldModule, MatButtonModule, FormsModule, ReactiveFormsModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './contact-form.scss',
-  template: ` 
-  <div id="form-container">
-      <form (submit)="onSubmit($event)" id="contact-form">
+   selector: 'app-contact-form',
+   imports: [ButtonComponent, FormField, FormRoot, MatInputModule, MatFormFieldModule, MatButtonModule, FormsModule, ReactiveFormsModule],
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   styleUrl: './contact-form.scss',
+   template: ` 
+      <form (submit)="onSubmit($event)" id="form-container">
          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Enter your name</mat-label>
             <input matInput 
@@ -69,8 +68,7 @@ interface ContactData {
          </mat-form-field>
 
          <app-button [id]="'contact-button'" [version]="'button'" [text]="buttonText()" [isDisabled]="contactForm().invalid()"></app-button>
-      </form>
-   </div> `
+      </form> `
 })
 
 export class ContactFormComponent {

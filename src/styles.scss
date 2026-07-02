@@ -24,12 +24,8 @@ $my-light-theme: mat.define-theme((
       surface: #1b1f1f,
    ));
 
-   @include mat.divider-overrides((
-      color: orange,
-   ));
-
-   // @include mat.button-overrides((
-   //    state-layer-color: rgba(255, 0, 0, 0.5)
+   // @include mat.divider-overrides((
+   //    color: orange,
    // ));
 }
 
@@ -51,6 +47,10 @@ html, body {
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing {
    border-color: #0dd110 !important;
+}
+
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+    border-left: 1px solid transparent !important;
 }
 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline__leading,
@@ -77,4 +77,10 @@ html, body {
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary:focus,
 .mat-mdc-standard-chip .mat-mdc-chip-action-label:focus {
    cursor: grabbing !important;
+}
+
+@media screen and (max-width: 1080px) { 
+   .mat-mdc-standard-chip .mdc-evolution-chip__text-label {
+      font-size: 12px !important;
+   }
 }

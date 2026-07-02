@@ -33,11 +33,6 @@ a:hover {
    cursor: pointer;
 }
 
-img {
-   width: 400px;
-   height: 400px;
-}
-
 header {
    height: 60px;
    display: flex;
@@ -149,6 +144,12 @@ nav ul li a {
 #profile-picture { 
    margin: auto 105px auto 0;
    border-radius: 200px; 
+   width: auto;
+   min-width: 320px;
+   max-width: 400px;
+   height: auto;
+   min-height: 320px;
+   max-width: 400px;
 }
 
 #about-container { margin-bottom: 60px; }
@@ -172,11 +173,14 @@ nav ul li a {
    max-width: 1300px;
 }
 
+#about-title { margin: 50px auto 40px auto; }
+#skillset-title { margin: 50px auto 30px auto; }
+
 .section-title {
    display: flex;
    justify-content: center;
    width: 100%;
-   margin: 60px auto 40px auto;
+   margin: 50px auto;
    padding: 10px 0;
 }
 
@@ -234,18 +238,17 @@ nav ul li a {
       // background-color: red;
       width: 100%;
    }
-
-   img {
-      width: 320px;
-      height: 320px;
-   }
    
-   h1 { font-size: 66px; }
+   h1 { font-size: 60px; }
    h2 { font-size: 42px; }
-   h3 { font-size: 30px ;}
+   h3 { font-size: 29px ;}
 
    .section-container {
       width: 800px;
+   }
+
+   .section-title {
+      margin: 30px auto;
    }
 
    #intro-container {
@@ -274,9 +277,13 @@ nav ul li a {
    #profile-picture {
       order: -1;
       margin: 0 auto 30px auto;
+      width: 320px;
+      height: 320px;
    }
 
    #about-container p {
+      font-size: 16px;
+      line-height: 28px;
       text-align: justify;
    }
 
