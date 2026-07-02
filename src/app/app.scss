@@ -132,9 +132,7 @@ nav ul li a {
    margin-left: 100px;
 }
 
-#intro-content h1 {
-   min-width: 480px;
-}
+
 
 #intro-content p {
    width: 400px;
@@ -145,11 +143,11 @@ nav ul li a {
    margin: auto 105px auto 0;
    border-radius: 200px; 
    width: auto;
-   min-width: 320px;
+   // min-width: 320px;
    max-width: 400px;
    height: auto;
-   min-height: 320px;
-   max-width: 400px;
+   // min-height: 320px;
+   max-height: 400px;
 }
 
 #about-container { margin-bottom: 60px; }
@@ -217,6 +215,10 @@ nav ul li a {
       width: 85%;
    }
 
+   #intro-content h1 {
+      min-width: 480px;
+   }
+
    .wd-1300 {
       max-width: 1300px;
       width: 100%;
@@ -245,11 +247,7 @@ nav ul li a {
    
    h1 { font-size: 60px; }
    h2 { font-size: 42px; }
-   h3 { font-size: 29px ;}
-
-   .section-container {
-      width: 800px;
-   }
+   h3 { font-size: 29px; }
 
    .section-title {
       margin: 30px auto;
@@ -265,16 +263,20 @@ nav ul li a {
    #intro-content {
       margin-left: 0;
       text-align: center;
+      width: 100%;
    }
 
    #intro-content h1 {
-      width: 100px;
+      width: auto;
+      max-width: 100px;
       margin: auto;
    }
 
    #intro-content p {
-      width: 550px;
+      width: auto;
+      max-width: 500px;
       margin: auto;
+      padding: 0 10px;
       text-align: center;
    }
 
@@ -300,6 +302,24 @@ nav ul li a {
 @media screen and (max-width: 430px) {
    #content {
       background-color: purple;
+   }
+
+   h1 { font-size: 40px; }
+   h3 { font-size: 23px; }
+
+   #intro-content h1 {
+      min-width: 260px;
+   }
+
+   #intro-content p {
+      font-size: 13px;
+   }
+
+   #profile-picture {
+      width: 65%;
+      // min-width: 250px;
+      height: 65%;
+      // min-height: 250px;
    }
 
    #about-container {

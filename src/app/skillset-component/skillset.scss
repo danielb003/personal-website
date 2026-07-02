@@ -49,3 +49,13 @@ p {
 #skillset-chip {
    margin: 5px 4px;
 }
+
+@media screen and (max-width: 430px) {
+   #skillset-chip-group p {
+      margin: 10px 60px;
+   }
+
+   #skillset-chip-list {
+      margin: 0 60px;
+   }
+}
