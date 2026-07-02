@@ -45,8 +45,7 @@ export class Carousel implements OnInit {
    ngOnInit(): void {
       this.slides[0] = {
          id: 0,
-         // src: "../../assets/images/guesswho_portfolio.jpg",
-         src: '../assets/images/prolific-trading.png',
+         src: "../../assets/images/guesswho_portfolio.jpg",
          href: 'https://google.com.au',
          title: 'Guess Who',
          subtitle: 'Two algorithms that play Guess Who.'
@@ -60,8 +59,7 @@ export class Carousel implements OnInit {
       };
       this.slides[2] = {
          id: 2,
-         src: '../assets/images/prolific-trading.png',
-         // src: '../../../assets/images/bookingsystem_portfolio.jpg',
+         src: '../../../assets/images/bookingsystem_portfolio.jpg',
          href: 'https://github.com/danielb003/bookingsystem',
          title: 'Booking System',
          subtitle: 'A booking system I made at University.'
