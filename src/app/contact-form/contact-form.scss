@@ -31,6 +31,7 @@
 @media screen and (max-width: 1080px) {
    .form-field {
       width: 45%;
+      min-width: 300px;
 
       --mat-form-field-container-text-size: 15px;
       --mat-form-field-floating-label-text-size: 50px;
@@ -41,5 +42,11 @@
 
    mat-label {
       font-size: 15px;
+   }
+}
+
+@media screen and (max-width: 430px) {
+   .form-field {
+      width: 70%;
    }
 }

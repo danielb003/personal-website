@@ -25,19 +25,54 @@ p {
    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
+mat-chip-set {
+   display: flex;
+   flex-wrap: wrap;
+   place-content: space-between flex-end !important;
+   // gap: 15px 2px;
+}
+
+// .mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+//    place-content: flex-end space-around !important;
+// }
+
+/*#skillset-chip-list {
+   // width: calc(100% - 200px);
+   margin: 0 80px 0 120px;
+   width: 100%;
+   max-width: 1100px;
+
+   gap: 15px;
+   min-height: 100px;
+}*/
+
 #skillset-chip-list {
    margin: 0 80px 0 120px;
+
+   gap: 15px 2px;
+   // min-height: 200px;
+}
+
+#mat-chip-set-div {
+   // width: calc(100% - 200px);
    width: 100%;
    max-width: 1100px;
    display: flex;
    flex-wrap: wrap;
-   place-content: start start;
-   // gap: 100px 10px;
+
+   // place-content: Y X
+   // place-content: space-between flex-end;
+   // align-content: center;
+   // justify-content: center;
+   // gap: 15px 2px;
+   // min-height: 100px;
 }
 
-.mat-mdc-standard-chip {
+mat-chip {
    border: 1px solid #0dd110;
    background-color: #4a4a4a !important;
+   margin: 5px 4px !important;
+
    --mat-chip-label-text-color: #0dd110;
    --mat-chip-label-text-font: "Montserrat", sans-serif;
    --mat-chip-label-text-size: 13px;
@@ -46,16 +81,23 @@ p {
    --mat-chip-hover-state-layer-color: rgba(0, 0, 0, 1.0);
 }
 
-#skillset-chip {
-   margin: 5px 4px;
-}
-
 @media screen and (max-width: 430px) {
    #skillset-chip-group p {
-      margin: 10px 60px;
+      margin: 10px 20px;
+      // text-align: center;
    }
 
    #skillset-chip-list {
-      margin: 0 60px;
+      margin: auto 20px;
+      place-content: center space-evenly;
+      // align-content: start;
+      // justify-content: flex-end;
    }
+
+   /*#mat-chip-set-div {
+      margin: auto 20px;
+      place-content: space-between space-evenly;
+      // align-content: start;
+      // justify-content: space-between;
+   }*/
 }

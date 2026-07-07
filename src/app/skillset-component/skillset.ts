@@ -12,6 +12,7 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
       @for(row of skills; track row; let rowIndex = $index) {
          <p>{{category[rowIndex]}}</p>
         
+         <!-- <div id="mat-chip-set-div"> -->
          <mat-chip-set 
             id="skillset-chip-list"
             cdkDropList
@@ -22,6 +23,7 @@ import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray } from '@angular/cdk
                 <mat-chip id="skillset-chip" cdkDrag matRipple>{{cell}}</mat-chip>
             }
          </mat-chip-set>
+         <!-- </div> -->
       }
    </div>`
 })

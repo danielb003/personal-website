@@ -64,3 +64,10 @@
       margin: 40px auto 0 auto;
    }
 }
+
+@media screen and (max-width: 430px) {
+   .mat-mdc-outlined-button {
+      width: 200px;
+      font-size: 12.5px;
+   }
+}

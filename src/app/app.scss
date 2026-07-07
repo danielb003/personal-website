@@ -132,8 +132,6 @@ nav ul li a {
    margin-left: 100px;
 }
 
-
-
 #intro-content p {
    width: 400px;
    font-size: 16px;
@@ -143,10 +141,10 @@ nav ul li a {
    margin: auto 105px auto 0;
    border-radius: 200px; 
    width: auto;
-   // min-width: 320px;
+   min-width: 350px;
    max-width: 400px;
    height: auto;
-   // min-height: 320px;
+   min-height: 350px;
    max-height: 400px;
 }
 
@@ -210,7 +208,6 @@ nav ul li a {
    }
 
    #content {
-      // background-color: maroon;
       max-width: 1300px;
       width: 85%;
    }
@@ -237,7 +234,6 @@ nav ul li a {
 
 @media screen and (max-width: 1080px) {   
    #content {
-      // background-color: red;
       width: 100%;
    }
 
@@ -283,8 +279,8 @@ nav ul li a {
    #profile-picture {
       order: -1;
       margin: 0 auto 30px auto;
-      width: 320px;
-      height: 320px;
+      max-width: 320px;
+      max-height: 320px;
    }
 
    #about-container p {
@@ -300,12 +296,25 @@ nav ul li a {
 }
 
 @media screen and (max-width: 430px) {
-   #content {
-      background-color: purple;
-   }
+   // #content {
+   //    background-color: purple;
+   // }
 
    h1 { font-size: 40px; }
    h3 { font-size: 23px; }
+
+   header {
+      width: 100%;
+   }
+
+   #header-content {
+      width: 100%;
+      padding: 0 10px;
+   }
+
+   #intro-container {
+      padding: 100px 0 90px 0;
+   }
 
    #intro-content h1 {
       min-width: 260px;
@@ -313,13 +322,15 @@ nav ul li a {
 
    #intro-content p {
       font-size: 13px;
+      padding: 0 30px;
    }
 
    #profile-picture {
+      margin: 0 auto 20px auto;
       width: 65%;
-      // min-width: 250px;
+      min-width: 50px;
       height: 65%;
-      // min-height: 250px;
+      min-height: 50px;
    }
 
    #about-container {
@@ -330,5 +341,9 @@ nav ul li a {
       width: 90%;
       font-size: 12px;
       line-height: 22px;
+   }
+
+   #portfolio-container {
+      margin-bottom: 50px;
    }
 }

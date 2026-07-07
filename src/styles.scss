@@ -79,8 +79,18 @@ html, body {
    cursor: grabbing !important;
 }
 
+.mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+   place-content: flex-start !important;
+}
+
 @media screen and (max-width: 1080px) { 
    .mat-mdc-standard-chip .mdc-evolution-chip__text-label {
       font-size: 12px !important;
+   }
+}
+
+@media screen and (max-width: 430px) {
+   .mat-mdc-chip-set .mdc-evolution-chip-set__chips {
+      place-content: center space-between !important;
    }
 }
