@@ -81,6 +81,16 @@ mat-chip {
    --mat-chip-hover-state-layer-color: rgba(0, 0, 0, 1.0);
 }
 
+@media screen and (max-width: 1080px) {
+   #skillset-chip-group p {
+      margin: 10px 12%;
+   }
+
+   #skillset-chip-list {
+      margin: 0 12%;
+   }
+}
+
 @media screen and (max-width: 430px) {
    #skillset-chip-group p {
       margin: 10px 20px;
